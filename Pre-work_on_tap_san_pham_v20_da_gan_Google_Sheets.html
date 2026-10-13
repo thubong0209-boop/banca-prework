@@ -1,0 +1,476 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pre-work ôn tập sản phẩm | v18</title>
+<style>
+:root{--sl-yellow:#FFE8A3;--sl-yellow-2:#FFF4CC;--sl-blue:#003B49;--sl-blue-2:#075B78;--sl-blue-3:#087F9C;--sl-blue-4:#DFF3F7;--sl-blue-5:#EEF8FA;--sl-orange:#F58220;--sl-red:#D7194A;--sl-purple:#6B275F;--sl-green:#006B45;--sl-teal:#00766F;--sl-sky:#139ED0;--sl-taupe:#82786F;--sl-cool:#5D8798;--sl-grey:#626262;--navy:var(--sl-blue);--blue:var(--sl-blue-2);--sky:var(--sl-blue-5);--orange:var(--sl-orange);--yellow:var(--sl-yellow);--green:var(--sl-green);--red:var(--sl-red);--ink:#173B43;--muted:#65777b;--line:#D9E7EA;--bg:#F7FAFA}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:linear-gradient(180deg,#F4FAFB,#FFFFFF 360px);color:var(--ink)}
+header{background:linear-gradient(120deg,#FFF3C7,#E7F6F8);color:var(--sl-blue);padding:28px 5vw 54px}header h1{margin:0 0 7px;font-size:clamp(24px,3vw,38px)}header p{margin:0;opacity:.82}.brandline{width:54px;height:6px;background:var(--sl-blue);border-radius:999px;margin-bottom:14px}
+.wrap{max-width:1180px;margin:-30px auto 50px;padding:0 18px}.shell{background:#fff;border:1px solid #e5eef6;border-radius:22px;box-shadow:0 18px 48px #0b46781c;overflow:hidden}
+.student{display:grid;grid-template-columns:1.6fr .8fr .8fr 1fr 1fr;gap:12px;padding:18px;background:#fff}.student input{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:11px;font:inherit;outline:none}.student input:focus,.answer:focus{border-color:#4aa6eb;box-shadow:0 0 0 3px #cfeaff}
+.category-switch{display:flex;gap:8px;padding:12px 18px 0;background:#fff}.catbtn{border:1px solid var(--line);background:#fff;padding:11px 16px;border-radius:999px;font-weight:800;color:var(--navy);cursor:pointer}.catbtn.active{background:var(--navy);color:#fff;border-color:var(--navy)}.main-products{display:none;padding:22px}.main-products.active{display:block}.main-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.main-card{border:1px solid var(--line);border-radius:16px;padding:18px;background:linear-gradient(145deg,#fff,#fffbe0)}.main-card h3{margin:8px 0;color:var(--navy)}.main-card p{color:var(--muted);font-size:14px}.main-card button{border:0;background:var(--yellow);color:var(--navy);font-weight:800;padding:9px 12px;border-radius:9px}.addon-area{display:block}.addon-area.hidden{display:none}.tabs{display:grid;grid-template-columns:repeat(6,1fr);gap:7px;background:#f5f6f0;padding:10px;border-block:1px solid var(--line);overflow:auto}.tab{border:0;background:transparent;border-radius:10px;padding:11px 9px;color:#486077;font-weight:700;cursor:pointer;white-space:nowrap}.tab.active{background:var(--sl-yellow);color:var(--sl-blue);box-shadow:0 2px 10px #153b5b16}.tab.done:after{content:' ✓';color:var(--green)}
+.panel{display:none;padding:26px}.panel.active{display:block}.product-head{display:flex;justify-content:space-between;gap:18px;align-items:end;margin-bottom:20px}.eyebrow{color:var(--orange);font-weight:800;font-size:12px;letter-spacing:.08em}.product-head h2{margin:5px 0 4px;font-size:27px;color:var(--navy)}.product-head p{margin:0;color:var(--muted)}
+.progressbox{min-width:190px}.progresslabel{display:flex;justify-content:space-between;font-size:12px;font-weight:700;margin-bottom:6px}.progress{height:9px;background:#e7eef4;border-radius:999px;overflow:hidden}.bar{height:100%;width:0;background:linear-gradient(90deg,#10a06b,#74cc9e);transition:.3s}
+.section-title{font-size:14px;color:var(--navy);margin:24px 0 10px}.questions{display:grid;gap:10px}.q{display:grid;grid-template-columns:34px 1fr;gap:12px;align-items:center;padding:13px;border:1px solid var(--line);border-radius:14px;background:#fff}.num{width:30px;height:30px;border-radius:9px;display:grid;place-items:center;background:var(--yellow);color:var(--navy);font-weight:800}.prompt{line-height:1.5}.answer{display:inline-block;width:92px;min-width:72px;margin:0 5px;padding:7px 9px;border:1px solid #bed0df;border-radius:9px;font:inherit}.q.correct{border-color:#8bd5b5;background:#f4fcf8}.q.wrong{border-color:#f2adad;background:#fff7f7}.feedback{grid-column:2;font-size:12px;font-weight:700;display:none}.correct .feedback{display:flex;color:var(--green)}.wrong .feedback{display:flex;color:var(--red)}.feedback{align-items:center;gap:8px;flex-wrap:wrap}.reveal-btn{border:0;background:var(--sl-blue);color:#fff;border-radius:8px;padding:6px 10px;font-size:12px;font-weight:800;cursor:pointer}.reveal-btn:hover{background:var(--sl-blue-2)}.answer-key{display:none;width:100%;margin-top:5px;padding:9px 11px;border-radius:9px;background:#FFF3B2;color:var(--sl-blue);border-left:4px solid var(--sl-yellow);font-weight:700}.answer-key.show{display:block}.wrong .answer{border-color:var(--sl-red);background:#fff7f9}.correct .answer{border-color:var(--sl-green);background:#f4fbf7}
+.actions{display:flex;gap:10px;justify-content:flex-end;margin-top:20px}.btn{border:0;border-radius:11px;padding:12px 18px;font-weight:800;cursor:pointer}.primary{background:var(--sl-yellow);color:var(--sl-blue)}.secondary{background:#eaf2f8;color:#315777}
+.result{display:none;margin-top:20px;border-radius:18px;padding:22px;background:linear-gradient(135deg,var(--navy),#006b73);color:#fff}.result.show{display:block}.result-top{display:flex;justify-content:space-between;gap:20px;align-items:center}.score{font-size:42px;font-weight:900}.status{font-size:14px;font-weight:900;padding:8px 12px;background:#ffffff20;border-radius:999px}.result small{opacity:.8}.hint{margin-top:12px;padding-top:12px;border-top:1px solid #ffffff30;font-size:13px}
+.legend{padding:0 26px 26px;color:var(--muted);font-size:12px}.pill{display:inline-block;background:#eef6fb;border-radius:999px;padding:5px 9px;margin-right:5px}
+@media(max-width:800px){.main-grid{grid-template-columns:1fr}.student{grid-template-columns:1fr}.tabs{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:max-content}.panel{padding:18px}.product-head{align-items:start;flex-direction:column}.progressbox{width:100%}.q{grid-template-columns:34px 1fr}.answer{grid-column:auto}.feedback{grid-column:2}.result-top{align-items:flex-start;flex-direction:column}}
+
+/* v4 layout polish */
+*{font-family:Arial,Helvetica,sans-serif!important}
+.q{grid-template-columns:42px minmax(0,1fr);gap:12px 14px;padding:16px 18px;border-color:#D7E6E9;border-radius:16px;background:#fff;align-items:center}
+.num{width:36px;height:36px;border-radius:11px;background:#E4F5F8;color:#075B78}
+.prompt{font-size:16px;line-height:1.75;min-width:0}
+.answer{width:90px;max-width:120px;min-width:68px;height:38px;margin:0 5px;padding:6px 9px;border:1.5px solid #7FB7C4;background:#F8FCFD;color:#003B49;border-radius:9px;vertical-align:middle;text-align:center;font-weight:700}
+.feedback{grid-column:2!important;width:auto!important;margin:2px 0 0;min-height:32px;display:none!important;align-items:center;gap:10px;flex-wrap:nowrap!important;font-size:13px}
+.correct .feedback,.wrong .feedback{display:flex!important}
+.wrong{border-color:#E9B8C4;background:#FFF9FA}.correct{border-color:#A8D3C3;background:#F7FCFA}
+.reveal-btn{display:inline-flex;align-items:center;white-space:nowrap;border:1px solid #BCDCE3;background:#EAF6F8;color:#075B78;border-radius:999px;padding:7px 12px;font-size:12px;font-weight:700}
+.reveal-btn:hover{background:#DDF1F5;color:#003B49}
+.answer-key{grid-column:2!important;width:max-content!important;max-width:min(520px,100%)!important;margin:0!important;padding:9px 13px!important;border:1px solid #B8DBE2!important;border-left:4px solid #087F9C!important;border-radius:9px!important;background:#EDF8FA!important;color:#003B49!important;font-size:13px!important;font-weight:700!important;line-height:1.4!important;overflow-wrap:anywhere}
+.answer-key strong{color:#075B78}
+.section-title{color:#003B49;border-left:4px solid #87C9D4;padding-left:10px}
+.tab.active{background:#DFF3F7!important;color:#003B49!important;box-shadow:inset 0 -3px 0 #087F9C,0 2px 10px #153b5b10}
+.catbtn.active{background:#075B78!important;color:#fff!important;border-color:#075B78!important}
+.primary{background:#DDF2F5!important;color:#003B49!important;border:1px solid #A9D4DD!important}.primary:hover{background:#CBEAF0!important}
+.secondary{background:#F3F7F8!important;color:#41636B!important;border:1px solid #D8E5E8!important}
+.result{background:linear-gradient(135deg,#003B49,#075B78 58%,#087F9C)!important}
+.bar{background:linear-gradient(90deg,#087F9C,#49AFC2)!important}
+@media(max-width:800px){.q{grid-template-columns:36px minmax(0,1fr);padding:14px}.prompt{font-size:15px}.answer{width:78px}.feedback,.answer-key{grid-column:2!important}.feedback{flex-wrap:wrap!important}.answer-key{width:100%!important}}
+
+/* v5 typography hardening */
+html,body,button,input,select,textarea,.shell,.student,.tabs,.tab,.catbtn,.panel,.product-head,.eyebrow,.progressbox,.progresslabel,.section-title,.questions,.q,.num,.prompt,.answer,.feedback,.reveal-btn,.answer-key,.actions,.btn,.result,.status,.hint,.legend,.pill{font-family:Arial,Helvetica,sans-serif!important;font-synthesis:none}
+button,input,select,textarea{font:inherit!important;letter-spacing:normal!important}
+.student input{font-family:Arial,Helvetica,sans-serif!important;font-weight:400!important}
+.btn,.tab,.catbtn,.reveal-btn{font-family:Arial,Helvetica,sans-serif!important;font-weight:700!important}
+.product-head h2,header h1,.score{font-family:Arial,Helvetica,sans-serif!important;font-weight:700!important}
+
+/* v6 result modal and completion states */
+.result{display:none!important}
+.tab.done{background:#E7F6EF!important;color:#006B45!important;box-shadow:inset 0 -3px 0 #006B45!important;padding-right:12px}
+.tab.done:after{content:'  ✓ PASS'!important;display:inline-block;color:#006B45!important;font-size:11px;font-weight:700;margin-left:5px}
+.result-modal{position:fixed;inset:0;z-index:9999;display:none;align-items:center;justify-content:center;padding:22px;background:rgba(0,59,73,.55);backdrop-filter:blur(5px)}
+.result-modal.show{display:flex}.result-window{width:min(720px,100%);background:#fff;border-radius:22px;box-shadow:0 24px 70px rgba(0,59,73,.28);overflow:hidden;animation:resultIn .22s ease-out}
+@keyframes resultIn{from{opacity:0;transform:translateY(16px) scale(.98)}to{opacity:1;transform:none}}
+.result-window-head{display:flex;justify-content:space-between;align-items:flex-start;padding:24px 26px 12px;background:linear-gradient(120deg,#FFF3C7,#E7F6F8)}
+.result-window-head h2{margin:5px 0 0;color:#003B49;font-size:25px}.modal-close{width:38px;height:38px;border:0;border-radius:50%;background:#fff;color:#075B78;font-size:26px;line-height:1;cursor:pointer}
+.result-summary{display:flex;justify-content:space-between;align-items:center;gap:20px;padding:24px 26px 12px}.modal-score{font-size:62px;font-weight:700;color:#003B49}.modal-state{padding:10px 15px;border-radius:999px;font-weight:700}.modal-state.pass{background:#E7F6EF;color:#006B45}.modal-state.fail{background:#FFF0F3;color:#B0163D}
+.modal-meta{padding:0 26px 20px;color:#41636B;line-height:1.65}.modal-note{margin:0 26px 20px;padding:13px 15px;border-radius:12px;background:#EEF8FA;color:#075B78;border-left:4px solid #087F9C}.modal-actions{display:flex;justify-content:flex-end;gap:10px;padding:18px 26px 24px;border-top:1px solid #E3ECEE}
+@media(max-width:620px){.result-summary{align-items:flex-start;flex-direction:column}.modal-score{font-size:50px}.modal-actions{flex-direction:column-reverse}.modal-actions .btn{width:100%}}
+
+/* v7 strict Arial reset and main product order */
+html,body,body *,body *::before,body *::after{font-family:Arial,Helvetica,sans-serif!important;font-synthesis:none!important}
+button,input,select,textarea{font-family:Arial,Helvetica,sans-serif!important;-webkit-appearance:none;appearance:none}
+.tab,.catbtn,.btn,.eyebrow,.section-title,.progresslabel,.num,.prompt,.feedback,.answer-key,.modal-state,.modal-meta,.modal-note{font-family:Arial,Helvetica,sans-serif!important}
+.main-tabs{grid-template-columns:repeat(4,minmax(180px,1fr))!important}
+@media(max-width:800px){.main-tabs{grid-template-columns:none!important;grid-auto-flow:column;grid-auto-columns:max-content}}
+
+/* v8 definitive typography */
+:root{font-family:Arial,Helvetica,sans-serif!important}
+html,body{font-family:Arial,Helvetica,sans-serif!important}
+*,*::before,*::after{font-family:Arial,Helvetica,sans-serif!important;font-synthesis:none!important}
+button,input,select,textarea,option{font-family:Arial,Helvetica,sans-serif!important;font-variant:normal!important;font-style:normal!important}
+.eyebrow{font-family:Arial,Helvetica,sans-serif!important;font-weight:700!important;letter-spacing:.04em!important}
+
+/* v9 force Arial and modal visibility */
+html,body,div,span,p,a,button,input,select,textarea,label,nav,section,main,header,h1,h2,h3,h4,h5,h6,small,strong,b,i,em{font-family:Arial,Helvetica,sans-serif!important}
+button,input,select,textarea{font-family:Arial,Helvetica,sans-serif!important;font-feature-settings:normal!important;text-rendering:optimizeLegibility}
+#resultModal.show{display:flex!important;visibility:visible!important;opacity:1!important}
+#resultModal{visibility:hidden;opacity:0}
+
+.result-fallback{display:none;position:sticky;top:10px;z-index:9998;margin:12px auto;width:min(920px,calc(100% - 30px));padding:14px 16px;border-radius:12px;background:#003B49;color:#fff;box-shadow:0 8px 26px rgba(0,59,73,.2);justify-content:space-between;align-items:center;gap:14px}.result-fallback.show{display:flex}.result-fallback strong{display:block;color:#fff;margin-bottom:3px}.result-fallback span{color:#EAF6F8}.result-fallback button{border:1px solid #8CC9D5;background:#EAF6F8;color:#003B49;border-radius:8px;padding:7px 12px;font-weight:700}
+
+/* v11 infographic result popup */
+html,body,body *,body *::before,body *::after{font-family:Arial,Helvetica,sans-serif!important;font-synthesis:none!important}
+#resultModal{font-family:Arial,Helvetica,sans-serif!important;background:rgba(0,45,58,.64);backdrop-filter:blur(7px)}
+#resultModal .result-window{width:min(920px,94vw);border-radius:24px;background:#fff;box-shadow:0 26px 80px rgba(0,45,58,.3);overflow:hidden}
+#resultModal .result-window-head{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,auto) 44px;gap:18px;align-items:center;padding:24px 28px;background:linear-gradient(110deg,#FFF4D6 0%,#EFF9FA 54%,#DDF2F5 100%);border-bottom:1px solid #D9E9EC}
+.result-head-title .eyebrow{color:#D9772A;font:700 13px Arial,Helvetica,sans-serif!important;letter-spacing:.08em}.result-head-title h2{font:700 28px Arial,Helvetica,sans-serif!important;margin:5px 0 0;color:#003B49}
+.learner-card{display:flex;align-items:center;gap:10px;padding:10px 13px;background:rgba(255,255,255,.78);border:1px solid #CFE4E8;border-radius:14px;color:#315861;min-width:0}.learner-icon{flex:0 0 36px;width:36px;height:36px;display:grid;place-items:center;border-radius:10px;background:#075B78;color:#fff;font:700 12px Arial,Helvetica,sans-serif!important}.learner-card div:last-child{min-width:0}.learner-card strong,.learner-card span{display:block;font-family:Arial,Helvetica,sans-serif!important}.learner-card strong{font-size:14px;color:#003B49;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.learner-card span{font-size:11px;margin-top:2px;color:#648089;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#resultModal .modal-close{width:40px;height:40px;display:grid;place-items:center;border:1px solid #D8E8EB;border-radius:50%;background:#fff;color:#075B78;font:400 24px Arial,Helvetica,sans-serif!important;cursor:pointer}
+.result-dashboard{display:grid;grid-template-columns:1.35fr .9fr .9fr 1fr;gap:12px;padding:24px 28px 16px;background:#fff}.score-card,.metric-card,.state-card{border:1px solid #DDEBED;border-radius:16px;padding:16px;background:#F8FCFD}.score-card{background:linear-gradient(145deg,#E8F6F8,#F7FBFC)}.score-card>span,.metric-card>span,.state-card>span{display:block;color:#6A858D;font:700 11px Arial,Helvetica,sans-serif!important;letter-spacing:.06em}.modal-score{margin:3px 0 6px;color:#003B49;font:700 52px Arial,Helvetica,sans-serif!important;line-height:1}.score-track{height:7px;border-radius:99px;background:#DDE9EC;overflow:hidden}.score-track>div{height:100%;width:0;background:linear-gradient(90deg,#139ED0,#006B45);border-radius:99px;transition:width .35s ease}.metric-card strong{display:block;margin:13px 0 4px;color:#003B49;font:700 27px Arial,Helvetica,sans-serif!important}.metric-card small{color:#729098;font:400 11px Arial,Helvetica,sans-serif!important}.state-card{display:flex;flex-direction:column;justify-content:space-between}.state-card .modal-state{display:inline-flex;align-self:flex-start;margin-top:16px;padding:9px 12px;border-radius:999px;font:700 12px Arial,Helvetica,sans-serif!important;white-space:nowrap}.state-card .modal-state.pass{background:#E1F5EA;color:#006B45}.state-card .modal-state.fail{background:#FFF0F3;color:#B0163D}
+#resultModal .modal-note{margin:0 28px 22px;padding:13px 15px;border:0;border-left:4px solid #139ED0;border-radius:10px;background:#EEF8FA;color:#075B78;font:400 13px Arial,Helvetica,sans-serif!important}
+#resultModal .modal-actions{display:flex;justify-content:flex-end;gap:10px;padding:18px 28px 24px;border-top:1px solid #E5EEF0;background:#FBFDFD}#resultModal .modal-actions .btn{font:700 13px Arial,Helvetica,sans-serif!important;border-radius:11px;padding:11px 16px}
+@media(max-width:760px){#resultModal .result-window-head{grid-template-columns:1fr 40px}.learner-card{grid-column:1/-1;grid-row:2}.result-dashboard{grid-template-columns:1fr 1fr}.score-card{grid-column:1/-1}#resultModal .modal-actions{flex-direction:column-reverse}#resultModal .modal-actions .btn{width:100%}}
+
+.choice-grid{grid-column:2;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin-top:8px}.choice{display:flex;align-items:flex-start;gap:9px;padding:11px 12px;border:1px solid #cbdce8;border-radius:12px;background:#f8fbfd;cursor:pointer;transition:.18s}.choice:hover{border-color:#2f84b8;background:#eef8ff;transform:translateY(-1px)}.choice input{margin-top:3px;accent-color:#0b6aa2}.choice:has(input:checked){border-color:#0b6aa2;background:#e8f6ff;box-shadow:0 0 0 2px #bfe8ff}.answer.select-answer{width:auto;min-width:160px;max-width:100%;background:#fff}.q.correct .choice:has(input:checked){border-color:#19a064;background:#effbf5}.q.wrong .choice:has(input:checked){border-color:#d83b50;background:#fff1f3}@media(max-width:700px){.choice-grid{grid-template-columns:1fr}}
+
+/* v17: cleaner learner input affordances */
+.answer:not(.radio-answer){background:#fff;border:1.5px solid #9fc2d6;box-shadow:inset 0 0 0 1px rgba(255,255,255,.5)}
+.answer:not(.radio-answer)::placeholder{color:#91aaba;opacity:1;font-style:italic}
+.answer.select-answer{padding-right:34px;background-color:#fff;color:#17384b}
+.choice-grid{gap:12px}
+.choice{position:relative;min-height:52px;padding:13px 15px;align-items:center;background:#fff;border:1px solid #d3e2eb;border-radius:14px;box-shadow:none}
+.choice:hover{background:#f7fbfe;border-color:#7fb8d6;transform:none}
+.choice input.radio-answer{-webkit-appearance:none;appearance:none;width:20px;height:20px;min-width:20px;border:2px solid #83aabd;border-radius:50%;background:#fff;margin:0;display:grid;place-content:center}
+.choice input.radio-answer::before{content:'';width:10px;height:10px;border-radius:50%;transform:scale(0);transition:120ms transform ease-in-out;background:#0878b8}
+.choice input.radio-answer:checked{border-color:#0878b8}
+.choice input.radio-answer:checked::before{transform:scale(1)}
+.choice:has(input:checked){border-color:#65a9cf;background:#f1f9fd;box-shadow:0 0 0 2px #d8effb}
+.choice b{color:#31586c}
+.q.correct .choice:has(input:checked){border-color:#19a064;background:#effbf5}.q.wrong .choice:has(input:checked){border-color:#d83b50;background:#fff1f3}
+/* v18: báo cáo kết quả, giữ nguyên Arial và bảng màu */
+.report-message{font-size:12px;color:#41636B;padding:10px 28px 0;line-height:1.55}
+.report-message.error{color:#B0163D}.report-message.sent{color:#006B45}
+.report-send[disabled]{opacity:.55;cursor:not-allowed}
+@media(max-width:760px){.report-message{padding:10px 20px 0}}
+</style>
+</head>
+<body>
+<header><div class="brandline"></div><h1>Pre-work ôn tập sản phẩm</h1><p>Ôn tập trước lớp • Sản phẩm chính và sản phẩm bán kèm • Điền trực tiếp và tự chấm</p></header>
+<div class="wrap"><main class="shell">
+<div class="student"><input id="studentName" placeholder="Họ và tên học viên"><input id="channel" placeholder="Kênh: ACB / TPB"><input id="className" placeholder="Lớp Onboard Ngày: "><input id="classCode" placeholder="Mã lớp (nếu có) "><input id="trainerName" placeholder="Tên giảng viên"></div>
+<div class="category-switch"><button class="catbtn active" id="cat-main" onclick="showCategory('main')">Sản phẩm chính</button><button class="catbtn" id="cat-addon" onclick="showCategory('addon')">Sản phẩm bán kèm</button></div>
+<section class="main-products active" id="main-products"><nav class="tabs main-tabs" id="main-tabs"></nav><div id="main-panels"></div></section>
+<div class="addon-area hidden" id="addon-area"><nav class="tabs" id="tabs"></nav><div id="panels"></div></div>
+<div style="margin:0 22px 14px;padding:12px 14px;border-radius:12px;background:#FFF8DC;border:1px solid #F2D56B;color:#5C4A00;font-size:13px"><strong>Lưu ý sử dụng:</strong> Nội dung phục vụ ôn tập nội bộ. Khi tư vấn hoặc xử lý hồ sơ, luôn đối chiếu Quy tắc và Điều khoản, Bảng minh họa và tài liệu nghiệp vụ đang hiệu lực.</div><div class="legend"><span class="pill">✓ Tự chấm từng tab</span><span class="pill">80% = Hoàn thành</span><span class="pill">Có thẻ kết quả để chụp màn hình</span></div>
+</main></div>
+<div id="resultFallback" class="result-fallback" role="status" aria-live="polite"><div><strong id="fallbackTitle">Kết quả</strong><span id="fallbackText"></span></div><button type="button" onclick="document.getElementById('resultFallback').classList.remove('show')">Đóng</button></div>
+<div class="result-modal" id="resultModal" aria-hidden="true">
+  <div class="result-window">
+    <div class="result-window-head">
+      <div class="result-head-title"><div class="eyebrow">KẾT QUẢ ÔN TẬP</div><h2 id="modalTitle">Kết quả</h2></div>
+      <div class="learner-card"><div class="learner-icon">HV</div><div><strong id="modalStudent">Học viên</strong><span id="modalClass">Lớp Onboard Ngày</span><span id="modalTrainer">Giảng viên</span></div></div>
+      <button class="modal-close" type="button" onclick="closeResult()" aria-label="Đóng">×</button>
+    </div>
+    <div class="result-dashboard">
+      <div class="score-card"><span>ĐIỂM ÔN TẬP</span><div class="modal-score" id="modalScore">0%</div><div class="score-track"><div id="modalScoreBar"></div></div></div>
+      <div class="metric-card"><span>CÂU ĐÚNG</span><strong id="modalCorrect">0/0</strong><small>Kết quả chấm tự động</small></div>
+      <div class="metric-card"><span>YÊU CẦU</span><strong>≥ 80%</strong><small>Ngưỡng hoàn thành</small></div>
+      <div class="state-card"><span>TRẠNG THÁI</span><div class="modal-state" id="modalState"></div></div>
+    </div>
+    <div class="modal-note" id="modalNote"></div>
+    <div id="reportMessage" class="report-message" role="status" aria-live="polite">Kết quả sẽ tự động gửi khi kiểm tra bài.</div>
+    <div class="modal-actions"><button class="btn secondary" type="button" onclick="closeResult()">← Quay lại xem câu sai</button><button class="btn primary" type="button" onclick="closeResultAndRetry()">↻ Làm lại sản phẩm này</button></div>
+  </div>
+</div>
+<script>
+const mainProducts=[
+{id:'svnm',name:'SUN - Vì Nhà Mình',tag:'LIÊN KẾT CHUNG | BẢO VỆ VÀ TÍCH LŨY',desc:'Ôn đầy đủ 6 nhóm kiến thức: tổng quan, bảo vệ, giá trị tài khoản, quyền BMBH, loại trừ và nghiệp vụ.',sections:[
+['1. Tổng quan sản phẩm',[
+['Tuổi tham gia của NĐBH: từ ___ ngày tuổi đến ___ tuổi.',['30|65']],
+['Thời hạn bảo hiểm tối đa đến khi NĐBH ___ tuổi.',['100']],
+['Thời hạn đóng phí bắt buộc là ___ Năm hợp đồng đầu tiên; từ Năm hợp đồng thứ ___ được đóng phí linh hoạt.',['4|5']],
+['Sản phẩm có hai kế hoạch: Ưu tiên ___ và Ưu tiên ___.',['Bảo vệ|Tích lũy']]
+]],
+['2. Quyền lợi bảo vệ',[
+['Quyền lợi bảo hiểm tạm thời bảo vệ trường hợp NĐBH tử vong do ___.',['Tai nạn']],
+['TTTBVV do ung thư tuyến giáp chưa di căn xa: ___% STBH, tối đa ___ triệu đồng.',['10|100']],
+['Quyền lợi TTTBVV áp dụng trước sinh nhật lần thứ ___ của NĐBH.',['75']],
+['STBH tự động tăng tại Năm hợp đồng ___ và ___: tăng ___% STBH năm đầu, tối đa ___ triệu đồng/lần.',['10|20|25|250']]
+]],
+['3. Quyền lợi gia tăng giá trị tài khoản',[
+['Thưởng duy trì hợp đồng được chi trả tại năm 10, 15 và 20, bằng ___% GTTK cơ bản trung bình của ___ tháng liền trước.',['3|60']],
+['Điều kiện thưởng duy trì: HĐ chưa từng mất hiệu lực, phí cơ bản đóng đầy đủ/đúng hạn và không rút tiền từ GTTK ___.',['cơ bản']],
+['Thưởng đóng phí đúng hạn được chi trả tại năm ___ và ___, bằng ___% GTTK cơ bản trung bình.',['8|15|25']],
+['Quyền lợi đáo hạn bằng ___% GTTK tại ngày đáo hạn.',['100']],
+['Lãi suất đầu tư cam kết tối thiểu: năm 1 ___%; năm 2-3 ___%; năm 4-5 ___%; năm 6-10 ___%; năm 11-15 ___%; năm 16-20 ___%; năm 21+ ___%.',['3.5|3|2.5|2|1.5|1|0.5']]
+]],
+['4. Quyền của BMBH',[
+['BMBH được rút tiền sau ___.',['Thời gian cân nhắc']],
+['Thứ tự rút tiền: GTTK ___ trước, sau đó đến GTTK ___.',['gia tăng|cơ bản']],
+['Đầu tư thêm được thực hiện sau khi đóng đủ phí cơ bản đến hạn; tổng phí đóng thêm tối đa ___ lần phí cơ bản quy năm/năm hợp đồng.',['5']],
+['BMBH có thể yêu cầu thay đổi định kỳ ___.',['đóng phí']],
+['Tăng STBH có thể yêu cầu bất kỳ lúc nào; giảm STBH từ đầu Năm hợp đồng thứ ___.',['3']],
+['Tăng STBH không thẩm định do sự kiện đặc biệt: từ năm thứ ___, tối đa ___ lần, mỗi năm ___ lần; yêu cầu trong ___ ngày từ sự kiện.',['2|3|1|270']]
+]],
+['5. Điều khoản loại trừ trọng yếu',[
+['Loại trừ tử vong do tự tử áp dụng trong vòng ___ năm kể từ ngày nộp phí đầu tiên hoặc ngày khôi phục hiệu lực gần nhất, tùy ngày nào sau.',['2']],
+['Các loại trừ tử vong còn gồm hành vi cố ý của BMBH/Người thụ hưởng, chấp hành án tử hình và sử dụng trái phép ___.',['ma túy']],
+['Loại trừ TTTBVV do ung thư tuyến giáp áp dụng trong vòng ___ ngày từ ngày hiệu lực/khôi phục/thay đổi STBH cho phần tăng thêm.',['90']],
+['Khi TTTBVV thuộc loại trừ, HĐ vẫn tiếp tục và NĐBH vẫn được bảo vệ cho các trường hợp ___ loại trừ.',['không thuộc']],
+['Khi tử vong thuộc loại trừ, Công ty chi trả giá trị lớn hơn giữa tổng phí đã đóng sau khấu trừ theo quy định và ___.',['Giá trị hoàn lại']]
+]],
+['6. Nghiệp vụ liên quan',[
+['Thời gian cân nhắc là ___ ngày kể từ ngày BMBH nhận HĐBH.',['21']],
+['Thời gian gia hạn đóng phí: ___ ngày trong 4 năm đầu; từ năm 5 tính từ ngày kỷ niệm tháng khi GTTK nhỏ hơn khoản khấu trừ hàng tháng.',['60']],
+['Thứ tự phân bổ phí, trừ khi có chỉ định khác: phí cơ bản định kỳ đến hạn trước, sau đó phí ___.',['đóng thêm']],
+['Trong thời gian gia hạn, nếu sự kiện bảo hiểm xảy ra, quyền lợi vẫn chi trả sau khi khấu trừ các ___.',['Khoản nợ']],
+['Chấm dứt HĐ trước hạn sau thời gian cân nhắc: BMBH nhận ___.',['Giá trị hoàn lại']],
+['Khôi phục hiệu lực phải đáp ứng yêu cầu thẩm định và đóng đủ các khoản tiền theo nguyên nhân mất hiệu lực.',['đúng']]
+]]]},
+{id:'stv',name:'SUN - Trọn Vui',tag:'BẢO VỆ 10 NĂM | HOÀN PHÍ ĐÁO HẠN',desc:'Ôn đầy đủ 6 nhóm kiến thức, nhấn mạnh quyền lợi đáo hạn, STBH giảm, loại trừ và khôi phục hiệu lực.',sections:[
+['1. Tổng quan sản phẩm',[
+['Tuổi tham gia: từ ___ ngày tuổi đến ___ tuổi.',['30|55']],
+['Thời hạn bảo hiểm và thời hạn đóng phí đều là ___ năm.',['10']],
+['Định kỳ đóng phí là ___.',['năm']],
+['STBH tối đa là ___ triệu đồng.',['500']]
+]],
+['2. Quyền lợi bảo vệ',[
+['Quyền lợi tử vong/TTTBVV do tai nạn là giá trị lớn hơn giữa ___% STBH và công thức theo quyền lợi đáo hạn.',['200']],
+['Quyền lợi tử vong/TTTBVV không do tai nạn là giá trị lớn hơn giữa ___% STBH và công thức theo quyền lợi đáo hạn.',['100']],
+['Quyền lợi TTTBVV áp dụng từ ___ tuổi đến trước ___ tuổi.',['18|65']],
+['Các quyền lợi chi trả được trừ khoản tạm ứng từ GTHL và ___ cộng dồn.',['lãi']]
+]],
+['3. Giá trị hợp đồng và quyền lợi tích lũy',[
+['Quyền lợi đáo hạn lên đến ___% tổng phí đã đóng khi đóng phí định kỳ năm và theo phí chuẩn.',['105']],
+['Quyền lợi đáo hạn cụ thể được thể hiện trên ___.',['Giấy chứng nhận bảo hiểm']],
+['SUN - Trọn Vui không có GTTK và lãi suất đầu tư cam kết; giá trị tích lũy trọng tâm là quyền lợi ___ và GTHL.',['đáo hạn']],
+['Khi đáo hạn, quyền lợi bị trừ khoản tạm ứng GTHL và ___ cộng dồn.',['lãi']]
+]],
+['4. Quyền của BMBH',[
+['Từ năm HĐ thứ ___, sau khi đóng đủ tối thiểu ___ năm, BMBH có thể chuyển sang HĐ có STBH giảm.',['6|5']],
+['Sau chuyển đổi STBH giảm, quyền lợi chính tiếp tục với mức giảm tương ứng và các SPBK sẽ ___.',['chấm dứt']],
+['Tạm ứng tối đa ___% GTHL sau khi trừ khoản tạm ứng và lãi hiện có.',['80']],
+['BMBH có quyền tham gia/hủy SPBK, tạm ứng GTHL và chấm dứt HĐ trước hạn; không được thay đổi ___ của sản phẩm chính.',['STBH']],
+['Khi chấm dứt HĐ trước hạn, BMBH nhận GTHL trừ các ___.',['khoản nợ']]
+]],
+['5. Điều khoản loại trừ trọng yếu',[
+['Loại trừ tử vong do tự tử áp dụng trong vòng ___ năm kể từ ngày hiệu lực hoặc ngày khôi phục gần nhất.',['2']],
+['Loại trừ tử vong còn gồm phạm tội/mưu toan phạm tội và thi hành án ___.',['tử hình']],
+['Loại trừ tử vong do tai nạn/TTTBVV gồm tự gây thương tích, bệnh/thương tật có trước ngày hiệu lực, hoạt động hàng không không phải hành khách trả cước và hoạt động ___.',['mạo hiểm']],
+['Khi tử vong thuộc loại trừ, Công ty hoàn tổng phí đã đóng không lãi trừ khoản tạm ứng GTHL và lãi; HĐ ___.',['chấm dứt']],
+['Nếu TTTBVV thuộc loại trừ, HĐ vẫn tiếp tục cho các trường hợp không thuộc ___.',['loại trừ']]
+]],
+['6. Nghiệp vụ liên quan',[
+['Thời gian cân nhắc là ___ ngày.',['21']],
+['Thời gian gia hạn đóng phí là ___ ngày từ ngày đến hạn.',['60']],
+['BMBH có thể yêu cầu khôi phục hiệu lực hoặc STBH ban đầu trong vòng ___ tháng từ ngày mất hiệu lực/chuyển STBH giảm.',['24']],
+['Nếu hết thời gian gia hạn mà không đóng phí và không có yêu cầu khác, HĐ sẽ ___.',['mất hiệu lực']],
+['Thứ tự ưu tiên nhận quyền lợi tử vong với BMBH cá nhân: Người thụ hưởng, sau đó người thừa kế hợp pháp của ___.',['NĐBH']],
+['Thời gian chờ đối với quyền lợi chính của SUN - Trọn Vui: ___.',['không áp dụng']]
+]]]},
+{id:'skc',name:'SUN - Khí Chất (ACB)',tag:'LIÊN KẾT CHUNG | GIẢI PHÁP KHÁCH HÀNG ƯU TIÊN',desc:'Ôn đầy đủ 6 nhóm kiến thức, gồm Quà tặng cuộc sống, quyền linh hoạt, loại trừ và nghiệp vụ GTTK.',sections:[
+['1. Tổng quan sản phẩm',[
+['Tuổi tham gia từ ___ đến ___ tuổi.',['20|50']],
+['Thời hạn đóng phí bắt buộc là ___ năm đầu; linh hoạt từ năm HĐ thứ ___.',['4|5']],
+['Sản phẩm có hai kế hoạch: Ưu tiên ___ và Ưu tiên ___.',['Bảo vệ|Tích lũy']],
+['Định kỳ đóng phí gồm năm, nửa năm và ___.',['quý']]
+]],
+['2. Quyền lợi bảo vệ',[
+['Kế hoạch Ưu tiên Tích lũy chi trả: GTTK gia tăng + giá trị lớn hơn giữa STBH và ___.',['GTTK cơ bản']],
+['Kế hoạch Ưu tiên Bảo vệ chi trả: STBH + ___.',['GTTK']],
+['Tử vong/TTTBVV do tai nạn được chi trả thêm ___% STBH ngoài quyền lợi cơ bản.',['50']],
+['Phí cơ bản năm tối thiểu để áp dụng quyền lợi tai nạn cộng thêm là ___ triệu đồng.',['100']],
+['Tổng quyền lợi tai nạn tối đa tại Công ty là ___ tỷ đồng/NĐBH.',['5']]
+]],
+['3. Quyền lợi gia tăng giá trị tài khoản',[
+['Quà tặng cuộc sống chi trả tại Năm hợp đồng thứ ___.',['10']],
+['Nếu kế hoạch đóng phí dự kiến dưới 7 năm: quà tặng ___% GTTK cơ bản; từ 7 năm trở lên: ___%.',['1|1.5']],
+['Quà tặng có thể dùng để đóng góp cho cộng đồng hoặc tham gia thêm ___.',['sản phẩm bán kèm']],
+['Lãi suất cam kết tối thiểu: năm 1 ___%; năm 2-3 ___%; năm 4-5 ___%; năm 6-10 ___%; năm 11-15 ___%; năm 16-20 ___%; năm 21+ ___%.',['3.5|3|2.5|2|1.5|1|0.5']],
+['Quyền lợi đáo hạn bằng ___% GTTK.',['100']]
+]],
+['4. Quyền của BMBH',[
+['BMBH được đóng phí linh hoạt/tạm ngưng từ năm HĐ thứ ___ nhưng phải duy trì GTTK đủ khoản khấu trừ.',['5']],
+['Đầu tư thêm tối đa ___ lần phí cơ bản quy năm trong mỗi Năm hợp đồng.',['5']],
+['Rút tiền sau thời gian cân nhắc; thứ tự từ GTTK ___ rồi đến GTTK ___.',['gia tăng|cơ bản']],
+['Rút tiền định kỳ tự động từ năm HĐ thứ ___ và khi NĐBH đạt ___ tuổi.',['10|60']],
+['Tăng STBH không thẩm định: tối đa ___ lần, mỗi lần tối đa ___% STBH ban đầu và không quá ___ triệu đồng.',['3|50|500']]
+]],
+['5. Điều khoản loại trừ trọng yếu',[
+['Loại trừ tử vong do tự tử áp dụng trong vòng ___ năm từ ngày nộp phí đầu tiên hoặc ngày khôi phục gần nhất.',['2']],
+['Các loại trừ gồm hành vi cố ý, chấp hành án tử hình, sử dụng ma túy/chất gây nghiện trái phép và vi phạm ___.',['pháp luật']],
+['Quyền lợi tai nạn không áp dụng cho nhóm nghề ___.',['4']],
+['Khi tử vong thuộc loại trừ, xử lý theo tổng phí đã đóng sau khấu trừ theo quy định hoặc ___.',['Giá trị hoàn lại']],
+['Bệnh/thương tật có sẵn phải được kê khai đầy đủ, trung thực khi tham gia và khi có yêu cầu thay đổi liên quan.',['đúng']]
+]],
+['6. Nghiệp vụ liên quan',[
+['Thời gian cân nhắc là ___ ngày.',['21']],
+['Thời gian gia hạn đóng phí là ___ ngày; trong 4 năm đầu tính từ ngày đến hạn, từ năm 5 tính khi GTTK dưới khoản khấu trừ.',['60']],
+['Thứ tự phân bổ phí: phí cơ bản định kỳ, phí SPBK, sau đó phí ___.',['đóng thêm']],
+['Khôi phục hiệu lực có thể yêu cầu trong vòng ___ tháng kể từ ngày mất hiệu lực.',['24']],
+['Nếu GTTK không đủ khoản khấu trừ sau thời gian gia hạn, HĐ sẽ ___.',['mất hiệu lực']],
+['Chấm dứt HĐ trước hạn: BMBH nhận GTHL sau khi trừ các khoản phí/nợ theo quy định.',['đúng']]
+]]]},
+{id:'svht',name:'SUN - Vững Hành Trình',tag:'TỬ KỲ + TAI NẠN | ĐÓNG PHÍ MỘT LẦN',desc:'Ôn đầy đủ 6 nhóm kiến thức; các nội dung GTTK và đóng phí linh hoạt được xác định là không áp dụng.',sections:[
+['1. Tổng quan sản phẩm',[
+['Gói gồm Bảo hiểm ___ 2025 đóng phí 1 lần và Bảo hiểm ___ 2025 đóng phí 1 lần.',['Tử kỳ|Tai nạn']],
+['Tuổi tham gia từ ___ đến ___ tuổi; tuổi tối đa bảo vệ ___ tuổi.',['18|65|70']],
+['Thời hạn bảo hiểm từ ___ đến ___ năm; phí đóng ___ lần.',['1|5|1']],
+['BMBH phải là ___; không có NĐBH bổ sung.',['NĐBH chính']],
+['STBH tối thiểu ___ triệu; tối đa Tử kỳ ___ tỷ và Tai nạn ___ tỷ.',['300|5|3']]
+]],
+['2. Quyền lợi bảo vệ',[
+['Bảo hiểm Tử kỳ chi trả tử vong/SGCNCTVV bằng ___% STBH.',['100']],
+['Hai kế hoạch bảo vệ: ___ và ___.',['cố định|giảm dần']],
+['Kế hoạch giảm dần chỉ áp dụng với thời hạn từ ___ năm.',['2']],
+['Tai nạn máy bay thương mại đủ điều kiện: ___% STBH tai nạn.',['300']],
+['Tai nạn trong sự kiện đặc biệt: ___% STBH; SGCNCTVV/tử vong do tai nạn khác: ___%.',['200|100']]
+]],
+['3. Gia tăng giá trị tài khoản',[
+['Sản phẩm đóng phí một lần và không có cấu trúc GTTK, khoản thưởng, lãi suất đầu tư hay quyền lợi đáo hạn tích lũy: ___.',['không áp dụng']]
+]],
+['4. Quyền của BMBH',[
+['Khi nộp HSYCBH, BMBH lựa chọn kế hoạch bảo vệ và ___.',['STBH']],
+['Sau phát hành và qua thời gian cân nhắc, STBH và kế hoạch bảo vệ ___ thay đổi trong thời hạn bảo hiểm.',['không thể']],
+['Các quyền đóng phí linh hoạt, đầu tư thêm, rút GTTK và thay đổi định kỳ đóng phí: ___.',['không áp dụng']],
+['BMBH có quyền hủy trong thời gian cân nhắc đối với HĐ có thời hạn từ 2-5 năm.',['đúng']]
+]],
+['5. Điều khoản loại trừ trọng yếu',[
+['Loại trừ có thể gồm tự tử, hành vi cố ý, vi phạm pháp luật, ma túy/chất gây nghiện, nồng độ cồn và chiến tranh.',['đúng']],
+['Khi tử vong do tai nạn thuộc loại trừ, Công ty hoàn tổng phí đã đóng sau khi trừ chi phí hợp lý và HĐ ___.',['chấm dứt']],
+['Khi SGCNCTVV do tai nạn thuộc loại trừ, HĐ tiếp tục cho các trường hợp không thuộc ___.',['loại trừ']],
+['Bệnh/thương tật có sẵn và thông tin sức khỏe phải được kê khai đầy đủ khi nộp HSYCBH.',['đúng']]
+]],
+['6. Nghiệp vụ liên quan',[
+['Thời hạn BH ___ năm: không áp dụng thời gian cân nhắc; thời hạn 2-5 năm: áp dụng ___ ngày.',['1|21']],
+['Do đóng phí một lần, quy định gia hạn đóng phí ___ ngày: ___.',['60|không áp dụng']],
+['Các quyền lợi bắt đầu theo ngày hiệu lực và điều kiện của từng sản phẩm Tử kỳ/Tai nạn.',['đúng']],
+['STBH và kế hoạch đã chọn không thay đổi sau thời gian cân nhắc.',['đúng']],
+['Khi giải quyết quyền lợi, áp dụng thứ tự ưu tiên người nhận theo QTĐK của từng sản phẩm.',['đúng']]
+]]]}
+];
+
+
+const products=[{"id":"chat","name":"Sống Chất 2.0","tag":"BẢO HIỂM SỨC KHỎE GIA ĐÌNH","desc":"Ôn kế hoạch, phạm vi, hạn mức và cơ chế chi trả của từng nhóm quyền lợi.","sections":[["Đặc điểm và kế hoạch",[["Sống Chất 2.0 là sản phẩm bảo hiểm ___ cho gia đình.",["sức khỏe"]],["Có ___ kế hoạch: ___ / ___ / ___ / ___ / ___.",["5|Nước|Mây|Đất|Sao|Trăng"]],["Phạm vi bảo hiểm có thể từ Việt Nam đến ___.",["Toàn Cầu"]],["Tuổi tham gia từ ___ ngày tuổi đến ___ tuổi; thời hạn bảo hiểm là ___ năm.",["30|70|1"]],["Phạm vi Nước: ___; Mây: ___; Đất: ___; Sao: ___; Trăng: ___.",["Việt Nam|Việt Nam|Châu Á|Toàn Cầu trừ Mỹ|Toàn Cầu"]],["Điều trị nội trú là quyền lợi ___; ngoại trú, nha khoa và thai sản là quyền lợi ___.",["mặc định|tùy chọn"]]]],["Hạn mức và mức chi trả",[["STBH nội trú Nước/Mây/Đất/Sao/Trăng: ___ / ___ / ___ / ___ / ___ triệu đồng.",["120|300|500|1000|3000"]],["STBH ngoại trú Nước/Mây/Đất/Sao/Trăng: ___ / ___ / ___ / ___ / ___ triệu đồng.",["5|12|20|40|120"]],["STBH nha khoa Nước/Mây/Đất/Sao/Trăng: ___ / ___ / ___ / ___ / ___ triệu đồng.",["2|4|10|15|30"]],["STBH thai sản Nước/Mây/Đất/Sao/Trăng: ___ / ___ / ___ / ___ / ___ triệu đồng.",["15|25|35|50|120"]],["NĐBH của quyền lợi thai sản là nữ từ ___ đến ___ tuổi.",["18|45"]],["Trong Hệ thống bảo lãnh viện phí: năm HĐ 1–2 chi trả ___%; từ năm HĐ 3 trở đi ___%.",["80|100"]],["Ngoài Hệ thống bảo lãnh: nội trú ___%; ngoại trú và nha khoa ___%; thai sản ___%.",["80|90|100"]],["Điều trị tại bệnh viện công hoặc phần chi phí còn lại sau BHYT/công ty bảo hiểm khác: ___%.",["100"]]]],["Điểm đặc biệt và phạm vi quyền lợi",[["Điều trị đặc biệt gồm cấy ghép nội tạng; điều trị ___ / ___ / ___; lọc thận.",["Ung thư|Đột quỵ|Nhồi máu cơ tim"]],["Điều trị cấp cứu do tai nạn bao gồm cấp cứu tổn thương ___ do tai nạn.",["răng"]],["Ngoại trú gồm thăm khám, vật lý trị liệu, thuốc kê toa, xét nghiệm, chẩn đoán hình ảnh và ___.",["y học thay thế"]],["Kế hoạch Trăng có STBH nội trú ___ tỷ đồng.",["3"]],["Với ___ / ___ / ___, kế hoạch Trăng chi trả theo chi phí thực tế và không giới hạn ngày/đợt trong phạm vi STBH.",["Ung thư|Đột quỵ|Nhồi máu cơ tim"]],["San sẻ yêu thương chuyển giao ___ chưa sử dụng; áp dụng cho nội trú hoặc nội trú + ___.",["hạn mức|ngoại trú"]],["Nha khoa và thai sản chỉ được lựa chọn khi có tham gia quyền lợi ___.",["điều trị ngoại trú"]]]]]},{"id":"an","name":"Sống An","tag":"BẢO HIỂM TAI NẠN","desc":"Ôn đầy đủ đặc điểm, quyền lợi và các mức chi trả tử vong do tai nạn.","sections":[["Đặc điểm sản phẩm",[["Sống An 2.0 là sản phẩm bảo hiểm ___.",["tai nạn"]],["Tuổi tham gia từ ___ ngày tuổi đến ___ tuổi.",["30|70"]],["Thời hạn bảo hiểm tối đa đến ___ tuổi.",["75"]]]],["Quyền lợi sản phẩm",[["Chấn thương do tai nạn: tổng mức chi trả trong suốt thời hạn hợp đồng lên đến ___% STBH.",["200"]],["Thương tật vĩnh viễn/Chấn thương nghiêm trọng do tai nạn: chi trả lên đến ___% STBH.",["100"]],["Tử vong do tai nạn: chi trả lên đến ___% STBH.",["300"]],["Tổng quyền lợi thưởng khi duy trì hợp đồng lên đến ___% phí năm.",["50"]],["Tử vong do tai nạn khi là hành khách trên chuyến bay thương mại đáp ứng điều kiện: ___% STBH.",["300"]],["Tử vong do tai nạn khi là hành khách trên phương tiện giao thông công cộng: ___% STBH.",["200"]],["Tử vong do tai nạn trong ngày nghỉ Lễ/Tết Việt Nam: ___% STBH.",["200"]],["Tử vong do tai nạn khác: ___% STBH.",["100"]]]]]},{"id":"vung","name":"Sống Vững","tag":"BẢO HIỂM BỆNH HIỂM NGHÈO","desc":"Bảo vệ bệnh hiểm nghèo nhiều giai đoạn và các quyền lợi bổ sung.","sections":[["Đặc điểm sản phẩm",[["Sống Vững là sản phẩm bảo hiểm ___.",["bệnh hiểm nghèo"]],["Sản phẩm bảo vệ lên đến ___ bệnh hiểm nghèo.",["90"]],["Tuổi tham gia từ ___ ngày tuổi đến ___ tuổi.",["30|70"]],["Thời hạn bảo hiểm tối đa đến ___ tuổi.",["85"]]]],["Quyền lợi sản phẩm",[["Bệnh hiểm nghèo giai đoạn đầu: ___% STBH.",["50"]],["Ung thư tuyến giáp giai đoạn I: tối đa ___ triệu đồng; các bệnh hiểm nghèo giai đoạn đầu khác: tối đa ___ triệu đồng.",["250|500"]],["Bệnh hiểm nghèo: ___% STBH; bệnh hiểm nghèo nghiêm trọng: chi trả thêm ___% STBH.",["150|25"]],["Biến chứng bệnh tiểu đường: ___% STBH, tối đa ___ triệu đồng.",["25|250"]],["Duy trì thế hệ tương lai hỗ trợ bảo quản lạnh ___ / ___ / ___.",["trứng|phôi|tinh trùng"]],["Quyền lợi Duy trì thế hệ tương lai: đến ___% STBH, tối đa ___ triệu đồng, áp dụng từ ___ đến ___ tuổi.",["25|100|18|45"]],["Tổng quyền lợi bảo vệ lên đến ___% STBH.",["225"]],["Tổng quyền lợi thưởng duy trì lên đến ___% phí bảo hiểm năm thực đóng.",["50"]]]]]},{"id":"chac","name":"Sống Chắc","tag":"MIỄN ĐÓNG PHÍ KHI MẮC BỆNH HIỂM NGHÈO","desc":"Trọng tâm là miễn đóng phí cho HĐBH, không phải chi trả một khoản tiền theo % STBH.","sections":[["Đặc điểm sản phẩm",[["Quyền lợi chính là ___ khi NĐBH mắc bệnh hiểm nghèo.",["miễn đóng phí"]],["Sản phẩm bảo vệ lên đến ___ bệnh hiểm nghèo cho người lớn và trẻ em.",["57"]],["Tuổi tham gia từ ___ ngày tuổi đến ___ tuổi.",["30|70"]],["Thời hạn bảo hiểm tối đa đến ___ tuổi.",["85"]]]],["Quyền lợi sản phẩm",[["Khi NĐBH mắc bệnh hiểm nghèo thuộc danh sách quy định, Công ty sẽ ___ phí cho HĐBH.",["miễn đóng"]],["Quyền lợi bắt đầu từ ___ ngay sau khi bệnh hiểm nghèo được chẩn đoán xác định.",["Ngày đến hạn đóng phí"]],["NĐBH phải còn sống ít nhất ___ ngày kể từ ngày có kết quả chẩn đoán hoặc thực hiện phẫu thuật.",["14"]]]]]},{"id":"term","name":"Tử Kỳ","tag":"BẢO HIỂM BÁN KÈM • TỬ VONG & TTTBVV","desc":"Ôn đúng tuổi tham gia, thời hạn và điều kiện chi trả một lần.","sections":[["Đặc điểm sản phẩm",[["Tuổi tham gia từ ___ ngày tuổi đến ___ tuổi.",["30|59"]],["Tuổi của NĐBH không vượt quá ___ tuổi tại thời điểm kết thúc thời hạn bảo hiểm.",["65"]],["Thời hạn bảo hiểm từ ___ đến ___ năm.",["6|20"]],["Thời hạn đóng phí ___ thời hạn bảo hiểm.",["bằng"]]]],["Quyền lợi sản phẩm",[["Tử vong đáp ứng điều kiện: ___% STBH.",["100"]],["TTTBVV trước ___ tuổi: ___% STBH.",["65|100"]],["Mỗi quyền lợi được chi trả ___ lần duy nhất trong suốt thời hạn HĐBH.",["1"]]]]]},{"id":"wop","name":"Hỗ trợ đóng phí","tag":"BẢO HIỂM BÁN KÈM • DUY TRÌ HỢP ĐỒNG","desc":"Hỗ trợ tiếp tục đóng phí khi NĐBH tử vong hoặc TTTBVV theo điều kiện sản phẩm.","sections":[["Đặc điểm sản phẩm",[["Tuổi tham gia từ ___ đến ___ tuổi.",["18|60"]],["Tuổi của NĐBH không vượt quá ___ tuổi tại thời điểm kết thúc thời hạn bảo hiểm.",["65"]],["Thời hạn bảo hiểm từ ___ đến ___ năm.",["5|47"]],["Thời hạn đóng phí ___ thời hạn bảo hiểm.",["bằng"]]]],["Quyền lợi sản phẩm",[["Nếu bán kèm Bảo hiểm liên kết chung, Công ty hỗ trợ ___% phí định kỳ.",["100"]],["Khoản phí định kỳ bằng Phí bảo hiểm cơ bản năm và tối đa bằng ___ lần Phí bảo hiểm cơ bản năm.",["5"]],["Nếu bán kèm sản phẩm bảo hiểm khác, Công ty hỗ trợ ___% phí bảo hiểm.",["100"]]]]]}];
+
+
+// Nội dung mở rộng SPBK theo đặc điểm, quyền lợi, loại trừ và nghiệp vụ
+const riderExtra={
+ chat:[['4. Loại trừ và nghiệp vụ nâng cao',[
+  ['Tai nạn có áp dụng thời gian chờ không?',['Không'],['Có, 30 ngày','Có, 90 ngày','Không','Tùy kế hoạch']],
+  ['Thời gian chờ của bệnh thông thường là bao lâu?',['30'],['15','30','60','90']],
+  ['Thời gian chờ của bệnh đặc biệt, ung thư, đột quỵ, nhồi máu cơ tim và cấy ghép nội tạng là bao lâu?',['90'],['30','60','90','270']],
+  ['Thời gian chờ của quyền lợi chăm sóc thai sản là bao lâu?',['270'],['90','180','270','365']],
+  ['Quyền lợi nội trú là quyền lợi nào khi tham gia Sống Chất 2.0?',['Mặc định'],['Mặc định','Tùy chọn','Bổ trợ tự động','Chỉ dành cho trẻ em']],
+  ['NĐBH từ 0 đến 4 tuổi chỉ được tham gia nội trú theo kế hoạch nào?',['Nước'],['Nước','Đất','Mây','Sao']]
+ ]]],
+ an:[['4. Loại trừ và nghiệp vụ nâng cao',[
+  ['Trong cùng một tai nạn hoặc cùng một Năm hợp đồng, tổng quyền lợi Chấn thương và Thương tật vĩnh viễn/Chấn thương nghiêm trọng tối đa là bao nhiêu?',['100'],['75','100','150','200']],
+  ['Điều kiện nhận thưởng duy trì là sản phẩm được duy trì hiệu lực liên tục theo từng khoảng bao nhiêu năm?',['5'],['3','5','7','10']],
+  ['Tai nạn khi là hành khách trên chuyến bay thương mại có thể được chi trả tối đa bao nhiêu phần trăm STBH?',['300'],['100','150','200','300']],
+  ['Hoạt động nào sau đây thuộc nhóm loại trừ?',['Nhảy bungee'],['Chạy bộ phong trào','Bơi giải trí','Nhảy bungee','Đi bộ đường dài']]
+ ]]],
+ vung:[['4. Loại trừ và nghiệp vụ nâng cao',[
+  ['Tổng quyền lợi bảo vệ của Sống Vững có thể lên đến bao nhiêu phần trăm STBH?',['225'],['175','200','225','250']],
+  ['Thời gian chờ đối với bệnh lý của Sống Vững là bao nhiêu ngày?',['90'],['30','60','90','180']],
+  ['Quyền lợi bệnh hiểm nghèo sau khi được chấp thuận chi trả 150% sẽ làm sản phẩm Sống Vững như thế nào?',['Chấm dứt hiệu lực'],['Tiếp tục nguyên quyền lợi','Chuyển sang bảo vệ giảm dần','Chấm dứt hiệu lực','Tạm ngưng 12 tháng']],
+  ['Quyền lợi thưởng duy trì yêu cầu sản phẩm được duy trì hiệu lực liên tục.',['Đúng'],['Đúng','Sai']]
+ ]]],
+ chac:[['4. Loại trừ và nghiệp vụ nâng cao',[
+  ['Quyền lợi miễn đóng phí của Sống Chắc được kích hoạt khi NĐBH mắc bệnh thuộc danh sách quy định và còn sống ít nhất bao nhiêu ngày sau chẩn đoán/phẫu thuật?',['14'],['7','14','21','30']],
+  ['Thời gian chờ đối với bệnh lý của Sống Chắc là bao nhiêu ngày?',['90'],['30','60','90','180']],
+  ['Khi quyền lợi miễn đóng phí được chấp thuận, các SPBK khác có quyền lợi hỗ trợ/miễn đóng phí trong cùng HĐ sẽ như thế nào?',['Chấm dứt hiệu lực'],['Tiếp tục đầy đủ','Giảm 50% quyền lợi','Chấm dứt hiệu lực','Tạm ngưng đến kỳ phí sau']],
+  ['Biến chứng tiểu đường thuộc phạm vi chi trả tiền mặt của Sống Vững, không phải điều kiện kích hoạt miễn đóng phí của Sống Chắc.',['Đúng'],['Đúng','Sai']]
+ ]]],
+ term:[['4. Loại trừ và nghiệp vụ nâng cao',[
+  ['Quyền lợi tử vong của BHBK Tử Kỳ được chi trả bao nhiêu lần?',['1'],['1','2','Theo từng năm','Không giới hạn']],
+  ['Sau khi chi trả quyền lợi tử vong hoặc TTTBVV, sản phẩm sẽ như thế nào?',['Chấm dứt'],['Tiếp tục đến đáo hạn','Chấm dứt','Tạm dừng 12 tháng','Giảm STBH']],
+  ['Loại trừ tự tử áp dụng trong vòng bao nhiêu năm kể từ ngày nộp phí đầu tiên hoặc khôi phục hiệu lực?',['2'],['1','2','3','5']],
+  ['Quyền lợi TTTBVV được bảo vệ trước tuổi nào?',['65'],['60','65','70','75']]
+ ]]],
+ wop:[['4. Loại trừ và nghiệp vụ nâng cao',[
+  ['Khi NĐBH tử vong hoặc TTTBVV đủ điều kiện, Công ty thực hiện quyền lợi nào?',['Đóng phí thay cho HĐBH'],['Hoàn toàn bộ phí đã đóng','Đóng phí thay cho HĐBH','Chi trả GTTK ngay','Tăng STBH sản phẩm chính']],
+  ['Thời gian giải quyết quyền lợi kể từ khi nhận đủ hồ sơ hợp lệ là bao nhiêu ngày?',['30'],['7','15','30','60']],
+  ['Hoạt động nào KHÔNG được xem là hoạt động nguy hiểm trong ví dụ loại trừ?',['Nhảy dây'],['Lặn có bình dưỡng khí','Nhảy dù','Leo núi','Nhảy dây']],
+  ['Nếu sự kiện thuộc điều khoản loại trừ, Công ty hoàn phí đã đóng của sản phẩm sau khi trừ Khoản nợ nếu có.',['Đúng'],['Đúng','Sai']]
+ ]]]
+};
+products.forEach(p=>{if(riderExtra[p.id]) p.sections.push(...riderExtra[p.id]);});
+
+const norm=s=>s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/đ/g,'d').replace(/[^a-z0-9|]/g,'').trim();
+
+const textPools=['Bảo vệ','Tích lũy','Mặc định','Tùy chọn','Chấm dứt','Tiếp tục','Giá trị hoàn lại','Giá trị tài khoản','Năm','Nửa năm','Quý','Tai nạn','Bệnh hiểm nghèo','Không áp dụng'];
+function isNumericAnswer(x){return /^\d+(?:[.,]\d+)?$/.test(String(x).trim())}
+function choicesFor(ans,provided){
+ if(provided&&provided.length)return provided;
+ const a=String(ans); const na=norm(a);
+ if(['dung','sai'].includes(na))return ['Đúng','Sai'];
+ if(isNumericAnswer(a)){let n=parseFloat(a.replace(',','.'));let vals=[n,Math.max(0,n-5),n+5,n===1?2:Math.max(1,Math.round(n*.5))];return [...new Set(vals.map(v=>String(v)))].slice(0,4)}
+ let near=textPools.filter(x=>norm(x)!==na).slice(0,3);return [a,...near].sort((x,y)=>norm(x).localeCompare(norm(y)));
+}
+function esc(s){return String(s).replace(/[&<>\"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;'}[c]))}
+
+function renderProducts(items,tabsSelector,panelsSelector,group){
+ const tabs=document.querySelector(tabsSelector),panels=document.querySelector(panelsSelector);
+ items.forEach((p,pi)=>{let b=document.createElement('button');b.className='tab'+(pi===0?' active':'');b.textContent=p.name;b.onclick=()=>activate(p.id,group);b.id='tab-'+p.id;tabs.appendChild(b);
+ let panel=document.createElement('section');panel.className='panel'+(pi===0?' active':'');panel.id='panel-'+p.id;let total=p.sections.reduce((a,s)=>a+s[1].length,0);
+ panel.innerHTML=`<div class="product-head"><div><div class="eyebrow">${p.tag}</div><h2>${p.name}</h2><p>${p.desc}</p><div style="margin-top:9px;font-size:12px;color:#607d8d"><b>Cách làm:</b> ô trống = nhập số &nbsp;•&nbsp; danh sách = chọn đáp án &nbsp;•&nbsp; vòng tròn = chọn 1 phương án</div></div><div class="progressbox"><div class="progresslabel"><span>Tiến độ</span><span id="progress-${p.id}">0/${total}</span></div><div class="progress"><div class="bar" id="bar-${p.id}"></div></div></div></div>`;
+ let idx=0;p.sections.forEach(sec=>{let h=document.createElement('h3');h.className='section-title';h.textContent=sec[0];panel.appendChild(h);let wrap=document.createElement('div');wrap.className='questions';sec[1].forEach(q=>{idx++;let d=document.createElement('div');d.className='q';let answers=q[1][0].split('|');d.dataset.answer=q[1][0];let blanks=(q[0].match(/___/g)||[]).length;let prompt=q[0];let controls='';
+ if(blanks){let bi=0;prompt=q[0].replace(/___/g,()=>{let ans=answers[bi]||'';let opts=choicesFor(ans,q[2]);let ctl=isNumericAnswer(ans)?`<input class="answer" data-blank="${bi}" autocomplete="off" inputmode="decimal" placeholder="Nhập số..." aria-label="Nhập đáp án ${bi+1}">`:`<select class="answer select-answer" data-blank="${bi}" aria-label="Chọn đáp án ${bi+1}"><option value="">▼ Chọn đáp án</option>${opts.map(o=>`<option>${esc(o)}</option>`).join('')}</select>`;bi++;return ctl});
+ }else{let ans=answers[0],opts=choicesFor(ans,q[2]);controls=`<div class="choice-grid">${opts.map((o,k)=>`<label class="choice"><input class="answer radio-answer" type="radio" name="q-${p.id}-${idx}" value="${esc(o)}"><span><b>${String.fromCharCode(65+k)}.</b> ${esc(o)}</span></label>`).join('')}</div>`}
+ d.innerHTML=`<div class="num">${idx}</div><div class="prompt">${prompt}</div>${controls}<div class="feedback"></div><div class="answer-key"></div>`;wrap.appendChild(d)});panel.appendChild(wrap)});
+ let a=document.createElement('div');a.className='actions';a.innerHTML=`<button class="btn secondary" onclick="resetProduct('${p.id}')">Làm lại</button><button class="btn primary" onclick="grade('${p.id}')">Kiểm tra kết quả</button>`;panel.appendChild(a);
+ let r=document.createElement('div');r.className='result';r.id='result-'+p.id;r.innerHTML=`<div class="result-top"><div><small>KẾT QUẢ ÔN TẬP • ${p.name.toUpperCase()}</small><div class="score" id="score-${p.id}">0%</div><div id="meta-${p.id}"></div></div><div class="status" id="status-${p.id}"></div></div><div class="hint">📸 Chụp màn hình thẻ kết quả này và gửi Giảng viên.</div>`;panel.appendChild(r);panels.appendChild(panel)});
+}
+renderProducts(mainProducts,'#main-tabs','#main-panels','main');
+renderProducts(products,'#tabs','#panels','addon');
+function showCategory(type){document.querySelector('#main-products').classList.toggle('active',type==='main');document.querySelector('#addon-area').classList.toggle('hidden',type==='main');document.querySelector('#cat-main').classList.toggle('active',type==='main');document.querySelector('#cat-addon').classList.toggle('active',type==='addon')}
+function activate(id,group){let root=group==='main'?document.querySelector('#main-products'):document.querySelector('#addon-area');root.querySelectorAll('.tab,.panel').forEach(x=>x.classList.remove('active'));document.querySelector('#tab-'+id).classList.add('active');document.querySelector('#panel-'+id).classList.add('active')}
+// URL nhận kết quả được cấu hình cho bản thử nghiệm.
+// Muốn gửi từ máy của học viên phải cấp quyền truy cập Web App phù hợp.
+// Lưu ý: endpoint công khai không xác thực danh tính hay chống giả mạo điểm số.
+const RESULT_ENDPOINT = 'https://script.google.com/macros/s/AKfycbwGfYuFHMKGhjFQfJOnuP6iDObWCgZBna44GxnPdwqLbxPlC5yV0AgBN9M0tob_iMdc/exec';
+const PRACTICE_VERSION = 'v20';
+function newAttemptId(){
+ if(window.crypto && typeof crypto.randomUUID === 'function') return crypto.randomUUID();
+ return 'attempt-'+Date.now()+'-'+Math.random().toString(36).slice(2,12);
+}
+let pendingResult=null;
+let reportSending=false;
+let reportQueue=Promise.resolve();
+const reportStatus=(message,kind='')=>{const el=document.getElementById('reportMessage');el.textContent=message;el.className='report-message '+kind};
+function getReportFields(){return {
+ studentName: document.getElementById('studentName').value.trim(),
+ channel: document.getElementById('channel').value.trim(),
+ className: document.getElementById('className').value.trim(),
+ classCode: document.getElementById('classCode').value.trim(),
+ trainerName: document.getElementById('trainerName').value.trim()
+}}
+function sendResultAutomatically(resultSnapshot, fieldsSnapshot){
+ // Mỗi lượt chấm tạo một yêu cầu riêng, kể cả FAIL. Không ghi đè kết quả cũ.
+ reportQueue=reportQueue.catch(()=>{}).then(async()=>{
+  const endpoint=RESULT_ENDPOINT.trim();
+  if(!/^https:\/\/script\.google\.com\/macros\/s\/[^/]+\/exec$/.test(endpoint)){
+   reportStatus('Chưa cấu hình URL Apps Script. Điểm chỉ được chấm tại trình duyệt; chưa gửi lên Google Sheets.','error');return;
+  }
+  if(!fieldsSnapshot.studentName || !fieldsSnapshot.channel || !fieldsSnapshot.className || !fieldsSnapshot.trainerName){
+   reportStatus('Đã chấm bài nhưng chưa gửi: cần nhập Họ tên, Kênh, Lớp Onboard và Giảng viên.','error');return;
+  }
+  reportStatus('Đang tự động gửi kết quả đến hệ thống báo cáo…');
+  try{
+   await fetch(endpoint,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({...fieldsSnapshot,...resultSnapshot}),redirect:'follow'});
+   // no-cors không đọc được phản hồi xác nhận lưu từ Apps Script.
+   reportStatus('Đã chuyển yêu cầu gửi kết quả. Trình duyệt không xác nhận được việc lưu; kiểm tra dòng mới trong Google Sheets (KET_QUA).','sent');
+  }catch(e){reportStatus('Gửi yêu cầu thất bại (mạng hoặc quyền truy cập). Hãy báo giảng viên để kiểm tra, tránh mất lượt làm bài.','error');}
+ });
+}
+
+let activeResultId=null;
+function grade(id){
+ const panel=document.querySelector('#panel-'+id),rows=[...panel.querySelectorAll('.q')];
+ let correct=0;
+ rows.forEach(row=>{
+  const all=[...row.querySelectorAll('.answer')],inputs=all.filter(x=>x.type!=='radio'||x.checked),expected=row.dataset.answer.split('|').map(norm);
+  const ok=inputs.length===expected.length&&inputs.every((inp,i)=>norm(inp.value)===expected[i]);
+  row.classList.remove('correct','wrong');row.classList.add(ok?'correct':'wrong');
+  const fb=row.querySelector('.feedback'),key=row.querySelector('.answer-key');key.classList.remove('show');key.textContent='';
+  if(ok){fb.textContent='✓ Chính xác';correct++}else{fb.innerHTML='✕ Chưa chính xác <button type="button" class="reveal-btn" onclick="revealAnswer(this)">Xem đáp án</button>'}
+ });
+ const pct=Math.round(correct/rows.length*100),pass=pct>=80;
+ document.querySelector('#progress-'+id).textContent=`${correct}/${rows.length}`;
+ document.querySelector('#bar-'+id).style.width=pct+'%';
+ const tab=document.querySelector('#tab-'+id);tab.classList.toggle('done',pass);
+ const product=[...mainProducts,...products].find(x=>x.id===id);
+ const n=document.querySelector('#studentName').value.trim()||'Chưa nhập tên';
+ const code=document.querySelector('#classCode').value.trim()||'Không có';
+ const trainer=document.querySelector('#trainerName').value.trim()||'Chưa nhập giảng viên';
+ const onboard=document.querySelector('#className').value.trim()||'Chưa nhập';
+ activeResultId=id;
+ pendingResult={productId:id,productName:product?product.name:id,correct,total:rows.length,score:pct,status:pass?'PASS':'FAIL',version:PRACTICE_VERSION,attemptId:newAttemptId()};
+ // Tự động ghi nhận mỗi lần bấm Kiểm tra kết quả, không cần nhấn gửi riêng.
+ sendResultAutomatically({...pendingResult},getReportFields());
+ document.querySelector('#modalTitle').textContent=product?product.name:'Kết quả';
+ document.querySelector('#modalScore').textContent=pct+'%';
+ const state=document.querySelector('#modalState');state.textContent=pass?'✓ ĐÃ HOÀN THÀNH':'↻ CẦN ÔN LẠI';state.className='modal-state '+(pass?'pass':'fail');
+ document.querySelector('#modalStudent').textContent=n;document.querySelector('#modalClass').textContent=`Lớp Onboard Ngày: ${onboard} • Mã lớp: ${code}`;document.querySelector('#modalTrainer').textContent=`Giảng viên: ${trainer}`;document.querySelector('#modalCorrect').textContent=`${correct}/${rows.length}`;document.querySelector('#modalScoreBar').style.width=pct+'%';
+ document.querySelector('#modalNote').textContent=pass?'Sản phẩm này đã được đánh dấu PASS trên tab.':'Quay lại xem câu sai và nhấn “Xem đáp án” để ôn lại.';
+ const fb=document.getElementById('resultFallback');if(fb){document.getElementById('fallbackTitle').textContent=(product?product.name:'Kết quả')+' • '+pct+'% • '+(pass?'✓ PASS':'CẦN ÔN LẠI');document.getElementById('fallbackText').textContent=`${correct}/${rows.length} câu đúng`;fb.classList.add('show');}
+ safeSave(id,{pct,correct,total:rows.length,pass});
+ openResult();
+}
+function openResult(){const m=document.getElementById('resultModal');if(!m){alert('Không thể mở bảng kết quả. Vui lòng tải lại trang.');return}m.classList.add('show');m.setAttribute('aria-hidden','false');m.style.setProperty('display','flex','important');m.style.setProperty('visibility','visible','important');m.style.setProperty('opacity','1','important');document.body.style.overflow='hidden'}
+function closeResult(){const m=document.getElementById('resultModal');if(!m)return;m.classList.remove('show');m.setAttribute('aria-hidden','true');m.style.setProperty('display','none','important');document.body.style.overflow=''}
+function closeResultAndRetry(){const id=activeResultId;closeResult();if(id)resetProduct(id)}
+function revealAnswer(btn){let row=btn.closest('.q'),key=row.querySelector('.answer-key'),expected=row.dataset.answer.split('|');key.innerHTML='<strong>Đáp án đúng:</strong> '+expected.join(' &nbsp;•&nbsp; ');key.classList.toggle('show');btn.textContent=key.classList.contains('show')?'Ẩn đáp án':'Xem đáp án'}
+function resetProduct(id){let panel=document.querySelector('#panel-'+id);panel.querySelectorAll('.answer').forEach(x=>{if(x.type==='radio')x.checked=false;else x.value=''});panel.querySelectorAll('.q').forEach(x=>{x.classList.remove('correct','wrong');let k=x.querySelector('.answer-key');if(k){k.classList.remove('show');k.textContent=''}let f=x.querySelector('.feedback');if(f)f.textContent=''});{const legacy=panel.querySelector('#result-'+id);if(legacy)legacy.classList.remove('show');}document.querySelector('#bar-'+id).style.width='0';document.querySelector('#progress-'+id).textContent='0/'+panel.querySelectorAll('.q').length;document.querySelector('#tab-'+id).classList.remove('done');safeRemove(id)}
+
+function safeSave(id,data){try{window.localStorage&&localStorage.setItem('practice-'+id,JSON.stringify(data))}catch(e){}}
+function safeRemove(id){try{window.localStorage&&localStorage.removeItem('practice-'+id)}catch(e){}}
+function safeLoad(id){try{return window.localStorage?JSON.parse(localStorage.getItem('practice-'+id)||'null'):null}catch(e){return null}}
+function restoreProgress(){[...mainProducts,...products].forEach(p=>{const saved=safeLoad(p.id);if(saved){const tab=document.querySelector('#tab-'+p.id);if(tab)tab.classList.toggle('done',saved.pct>=80);const prog=document.querySelector('#progress-'+p.id),bar=document.querySelector('#bar-'+p.id);if(prog)prog.textContent=`${saved.correct}/${saved.total}`;if(bar)bar.style.width=saved.pct+'%'}})}
+window.addEventListener('DOMContentLoaded',()=>{restoreProgress();const rm=document.getElementById('resultModal');if(rm)rm.addEventListener('click',e=>{if(e.target===rm)closeResult()});document.addEventListener('keydown',e=>{if(e.key==='Escape')closeResult()})});
+</script></body></html>
